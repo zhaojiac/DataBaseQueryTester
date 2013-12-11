@@ -24,7 +24,6 @@ var getCount = function(id,start){
 
 	        var sql = "SELECT * FROM ?? WHERE ?? = ?";
 		var inserts = ['WRKLGHT.GADGET_USER_PREF', 'ID', id];
-		var requestTime = new Date().getTime();
 		sql = mysql.format(sql, inserts);
 	   	
 		connection.query(sql, function(err, result) {
@@ -35,7 +34,7 @@ var getCount = function(id,start){
 
 			} else {
 				endcount++;
-				var currentResponse = new Date().getTime() - requestTime;
+				var currentResponse = new Date().getTime() - start;
 				//console.log("Actual start time is " + start);
 				sum += currentResponse;
 				if(endcount === queueSize){
